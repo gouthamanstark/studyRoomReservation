@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+	<title>Detailed student information</title>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h3>Student Information</h3>
+	<hr>
+	
+	<table class="table table-bordered table-striped">
+		<thead class="table-dark">
+			<tr>
+				<th>Enrollment Number</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>Phone Number</th>
+				<th>Address</th>
+				<th>Gender</th>
+				<th>Number of Semester</th>
+				<th>Department</th>
+				<th>Natinality</th>
+				<th>NFC tag</th>
+				<th>Course Details</th>
+				<th>Account Enabled</th>
+				<th> 2FA</th>
+				
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:object="${student}">
+				<td th:text="*{studentId}" />
+				<td th:text="*{firstName}" />	
+				<td th:text="*{lastName}" />
+				<td th:text="*{email}" />
+				<td th:text="*{studentDetails.phoneNumber}" />
+				<td th:text="*{studentDetails.address}" />
+				<td th:text="*{studentDetails.gender}" />
+				<td th:text="*{studentDetails.numberOfSemester}" />
+				<td th:text="*{studentDetails.department}" />
+				<td th:text="*{studentDetails.nationality}" />
+				<td th:text="*{studentDetails.nfcTagUUID}" />	
+				<td th:text="*{studentDetails.courseName}" />
+				<td th:text="*{studentDetails.enabled}" />
+				<td th:text="*{studentDetails.twoFactorAuthentication}" />
+				
+			</tr>
+		</tbody>		
+	</table>
+	
+</div>
+	
+</body>
+</html>

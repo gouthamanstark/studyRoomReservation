@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	
+<style>
+        .right-aligned{
+            text-align: right;
+        }
+    </style>
+    
+
+	<title>Student Directory</title>
+</head>
+
+<body>
+
+
+
+<div class="reservation">
+
+<a th:href="@{/student/showFormForReservation}" class="btn btn-danger btn-sm mb-3"> 
+	
+	Reserve a Study Room 
+	</a>	
+	
+	<div class="right-aligned">
+	<a th:text="${'Welcome : '+studentName +[(studentID)]}" th:href="@{/student/profile}" ></a>
+	</div>
+	
+	<h3>Current Reservations</h3>
+	<hr>
+	
+	
+	<table class="table table-bordered table-striped">
+		<thead class="table-dark">
+			<tr>
+				<th>Reservation ID</th>
+				<th>Reservation Date</th>
+				<th>Room Number</th>
+				<th>Actions</th>
+				
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempEmployee : ${reservation}">
+				<td th:text="${tempEmployee.reservationId}" />
+				<td th:text="${tempEmployee.reservedDate}" />	
+				<td th:text="${tempEmployee.roomNumber}" />
+				
+				<td>
+				<a th:href="@{/student/showFormForReservationUpdate(reservationID=${tempEmployee.reservationId})}" class="btn btn-info btn-sm mb-3"> 
+	
+	Update Reservation 
+	</a>
+					
+				</td>
+				
+	<td>
+			<a th:href="@{/student/cancelReservation(reservationID=${tempEmployee.reservationId})}" class="btn btn-danger btn-sm mb-3"> 
+	
+	Cancel Reservation
+	</a>		
+				</td>
+			</tr>
+		</tbody>		
+	</table>
+	
+</div>
+	
+</body>
+</html>
+
+
+
